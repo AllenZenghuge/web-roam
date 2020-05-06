@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .box {
+      position: relative;
+      background-color: coral;
+      border: 1px solid;
+      padding: 50px;
+    }
+
+    .child {
+      position: relative;
+      background-color: pink;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>该实例演示了在添加事件监听时冒泡与捕获阶段的不同。</p>
+  <div id="myDiv" class="box">
+    <div id="myP" class="child">点击该方块， 我是冒泡</div>
+  </div>
+  <div id="myDiv2" class="box">
+    <div id="myP2" class="child">点击该方块， 我是捕获</div>
+  </div>
+  <img style="width: 60vw;" src="http://picbed.sedationh.cn/image-20200406095522769.png" alt="">
+  <script>
+    document.getElementById("myP").addEventListener("click", function () {
+      alert("你点击了 粉色!");
+    }, false);
+    document.getElementById("myDiv").addEventListener("click", function () {
+      alert("你点击了 橙色!");
+    }, false);
+    document.getElementById("myP2").addEventListener("click", function () {
+      alert("你点击了 粉色!");
+    }, true);
+    document.getElementById("myDiv2").addEventListener("click", function () {
+      alert("你点击了 橙色!");
+    }, true);
+  </script>
+
+</body>
+
+</html>

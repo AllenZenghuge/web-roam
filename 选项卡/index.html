@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      height: 500px;
+      width: 300px;
+      background-color: pink;
+    }
+
+    .tab {
+      display: flex;
+      height: 100px;
+    }
+
+    .tab-item {
+      flex: 1;
+      height: 100%;
+      text-align: center;
+      line-height: 100px;
+    }
+
+    .tab-item.active {
+      background-color: black;
+      color: white;
+    }
+
+    .content {
+      height: 400px;
+    }
+
+    .content-item {
+      display: none;
+    }
+
+    .content-item.active {
+      display: block;
+      line-height: 400px;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="tab">
+      <div class="tab-item active">1</div>
+      <div class="tab-item">2</div>
+      <div class="tab-item">3</div>
+    </div>
+    <div class="content">
+      <div class="content-item active">📃1</div>
+      <div class="content-item">📃2</div>
+      <div class="content-item">📃3</div>
+    </div>
+  </div>
+
+  <script>
+    ; (function (doc) {
+      const tab = doc.getElementsByClassName('tab')[0],
+        content = doc.getElementsByClassName('content')[0],
+        tabItems = tab.getElementsByClassName('tab-item'),
+        contentItems = content.getElementsByClassName('content-item')
+
+      const init = () => {
+        bindEvent()
+      }
+      function bindEvent() {
+        tab.addEventListener('click', handleTabClick)
+      }
+      function handleTabClick(e) {
+        const tar = e.target,
+          className = tar.className
+        if (className === 'tab-item') {
+          for (let i = 0; i < tabItems.length; i++) {
+            tabItems[i].className = 'tab-item'
+            contentItems[i].className = 'content-item'
+          }
+          tar.className += ' active'
+          // 能获取了index，其实在前面单独重制也可以
+          const currentContentItemIndex = Array.prototype.indexOf.call(tabItems, tar)
+          contentItems[currentContentItemIndex].className += ' active'
+        }
+      }
+      init()
+    })(document);
+  </script>
+</body>
+
+</html>

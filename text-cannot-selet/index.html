@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不可选🙅</title>
+  <style>
+    .content p {
+      user-select: all
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h1>⚠️三秒后文本不可选🙅</h1>
+    <h2>倒计时: <span class="timer"></span>s</h2>
+    <p>
+      this is a paragrph
+    </p>
+  </div>
+  <script>
+    let node = document.querySelectorAll('.content p')
+    setTimeout(() => {
+      node[0].style.userSelect = 'none'
+    }, 3000);
+
+    let time = 3
+    let timeNode = document.querySelectorAll('.timer')[0]
+    timeNode.innerHTML = time
+    const timer = setInterval(() => {
+      time--
+      timeNode.innerHTML = time
+      if (time == 0) {
+        clearInterval(timer)
+      }
+    }, 1000)
+  </script>
+</body>
+
+</html>
