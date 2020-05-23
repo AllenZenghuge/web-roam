@@ -21,7 +21,8 @@ GET / HTTP1.1
 ```
 
 2. 查找缓存
-   1. DNS缓存和页面缓存
+   1. DNS缓存
+   2. 页面缓存
 
 在真正的发起网络请求之前，浏览器会先在浏览器缓存里查询是否有要请求的文件
 
@@ -141,7 +142,7 @@ Connection: keep-alive
 Location: https://www.geekbang.org/
 ```
 
-
+也可能会重定向改变链接协议 如吧http变为https
 
 四次挥手断开TCP链接
 
