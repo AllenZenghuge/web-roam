@@ -1,0 +1,53 @@
+<body>
+  <script>
+    Function.prototype.bind = function (obj) {
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      const _this = this
+      const args = [...arguments].slice(1)
+      // 返回函数 不立刻执行
+      return function F() {
+        // 通过new Con() 调用的话 obj失效， this绑定到实例上
+        // new Con().bind() new Con()代码执行，返回实例 instanceof 这个实例
+        if (this instanceof F) {
+          return new _this(...args, ...arguments)
+        } else {
+          // 在apply处理了非obj的情况
+          return _this.apply(obj, args.concat(...arguments))
+        }
+      }
+    }
+    function foo() {
+      console.log(arguments)
+    }
+    const bindFoo = foo.bind(null, 1, 2)
+    bindFoo(3) // 1 2 3
+
+    const obj = {
+      a: 1,
+      b: 2,
+      getAB() {
+        console.log(this.a, this.b)
+      }
+    }
+
+    obj.getAB() // 1 2
+    const fun = obj.getAB
+    fun() // undefined
+    const bindFun = fun.bind(obj)
+    bindFun() // 1 2
+
+    const bar = {
+      name: 'i am bar'
+    }
+    function Con() {
+      this.age = '10'
+      console.log(this, this === bar)
+    }
+    Con() // window false
+    const bindCon = Con.bind(bar)
+    bindCon() // {name: "i am bar", age: "10"} true
+    new bindCon // Con {age: "10"} false
+  </script>
+</body>
