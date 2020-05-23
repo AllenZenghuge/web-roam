@@ -49,5 +49,16 @@
     const bindCon = Con.bind(bar)
     bindCon() // {name: "i am bar", age: "10"} true
     new bindCon // Con {age: "10"} false
+    /*
+     下面这一行不能执行
+    new 吧后面整个玩意看作构造函数 Con.bind 内部的this是个对象
+    */
+    new Con.bind(bar) // Con {age: "10"} false
   </script>
 </body>
+
+/*
+ 下面这一行不能执行
+  new 吧后面整个玩意看作构造函数 Con.bind 内部的this是个对象
+*/
+new Con.bind(bar) // Con {age: "10"} false
