@@ -1,0 +1,28 @@
+<body>
+  尽管可以通过Event loop机制来处理maximum call stack问题，
+  但是速度慢好多
+  <script>
+    function stackOverflowNormal(n) {
+      if (n === 0) {
+        console.timeEnd('1')
+        return
+      }
+      stackOverflowNormal(n - 1)
+    }
+    console.time('1')
+    stackOverflowNormal(100000)
+    // 2: 0.140869140625ms
+    function stackOverflow(n) {
+      if (n === 0) {
+        console.timeEnd('2')
+        return
+      }
+      setTimeout(() => {
+        stackOverflow(n - 1)
+      }, 0);
+    }
+    console.time('2')
+    stackOverflow(1000)
+    // 1: 5085.13525390625ms
+  </script>
+</body>
