@@ -1,0 +1,15 @@
+<body>
+1
+  <script>
+    function fn() {
+      var a = 1
+      var b = 1
+      {
+        console.log('into chunk')
+        let b = 2
+        console.log('pause')
+      }
+    }
+    fn()
+  </script>
+</body>
