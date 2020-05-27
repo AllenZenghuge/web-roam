@@ -1,0 +1,27 @@
+<body>
+
+  <script>
+    function foo() {
+      let name = 'SedationH'
+      let age = 11
+      return function bar() {
+        var name = '2'
+        let address = 'earth'
+        return {
+          getInfo() {
+            var name = 1
+            console.log(name)
+            console.log(age)
+            console.log(address)
+          }
+        }
+
+      }
+    }
+    ;(function noName() {
+      var time = 12
+      const nameFn = foo()()
+      nameFn.getInfo()
+    })()
+  </script>
+</body>
