@@ -3,25 +3,38 @@
   <script>
     function foo() {
       let name = 'SedationH'
-      let age = 11
-      return function bar() {
-        var name = '2'
-        let address = 'earth'
-        return {
-          getInfo() {
-            var name = 1
-            console.log(name)
-            console.log(age)
-            console.log(address)
-          }
+      return {
+        getName() {
+          console.log(name)
+        },
+        setName(newName) {
+          name = newName
         }
-
       }
     }
-    ;(function noName() {
-      var time = 12
-      const nameFn = foo()()
-      nameFn.getInfo()
-    })()
+    const nameFn = foo()
+    const otherNameFn = foo()
+    nameFn.getName() // SedationH
+    nameFn.setName('1')
+    nameFn.getName() // 1
+    otherNameFn.getName() // SedationH
+
+    function fn() {
+      let obj = {
+        name: 'a'
+      }
+      return {
+        getName: function () {
+          console.log(name)
+        },
+        setName: function (newName) {
+          name = newName
+        }
+      }
+    }
+    let bar1 = fn()
+    bar1.setName('c')
+    let bar2 = fn()
+    bar2.getName() // c
   </script>
 </body>
