@@ -1,0 +1,15 @@
+<body>
+  
+  <script>
+    function fn1(){
+      console.log(1)
+    }
+    function f2(){
+      setTimeout(() => {
+        fn1()
+      }, 0);
+      console.log(2)
+    }
+    f2()
+  </script>
+</body>
