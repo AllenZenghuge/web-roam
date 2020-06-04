@@ -44,3 +44,12 @@ DOM树提供了对HTML文档结构化的表述
 另外 对于script标签，有 async 和 defer可以让他们异步加载,DOM无须等待
 
 [详细参看](https://javascript.info/script-async-defer)
+
+
+
+## 预解析
+
+浏览器为了不让文件下载太久影响体验，有预解析的优化。
+
+当渲染引擎收到字节流之后，会开启一个预解析线程，用来分析 HTML 文件中包含的 JavaScript、CSS 等相关文件，解析到相关文件之后，预解析线程会提前下载这些文件。
+
