@@ -1,0 +1,49 @@
+<html>
+
+<body>
+  <div id="mian_div">
+    <li id="time_li">time</li>
+    <li>geekbang</li>
+  </div>
+
+  <p id="demo"> 强制布局 demo</p>
+  <button onclick="foo()"> 添加新元素 </button>
+  <button onclick="foo1()"> 添加新元素 强制 </button>
+  <button onclick="foo2()"> 添加新元素 抖动 </button>
+
+  <script>
+    function foo() {
+      let main_div = document.getElementById("mian_div")
+      let new_node = document.createElement("li")
+      let textnode = document.createTextNode("time.geekbang")
+      new_node.appendChild(textnode);
+      document.getElementById("mian_div").appendChild(new_node);
+    }
+
+    function foo1() {
+      let main_div = document.getElementById("mian_div")
+      let new_node = document.createElement("li")
+      let textnode = document.createTextNode("time.geekbang")
+      new_node.appendChild(textnode);
+      document.getElementById("mian_div").appendChild(new_node);
+      // 由于要获取到 offsetHeight，
+      // 但是此时的 offsetHeight 还是老的数据，
+      // 所以需要立即执行布局操作
+      console.log(main_div.offsetHeight)
+    }
+
+    function foo2() {
+      let time_li = document.getElementById("time_li")
+      for (let i = 0; i < 100; i++) {
+        let main_div = document.getElementById("mian_div")
+        let new_node = document.createElement("li")
+        let textnode = document.createTextNode("time.geekbang")
+        new_node.appendChild(textnode);
+        new_node.offsetHeight = time_li.offsetHeight;
+        document.getElementById("mian_div").appendChild(new_node);
+      }
+    }
+  </script>
+</body>
+
+</html>
