@@ -6,4 +6,12 @@ Welcome to SedationH's Web Roam World😊
 
 基础决定了未来的路能走多远，能走多快
 
-Open your mind, 向上开朗
+
+
+
+
+## Todo
+
+- [ ] Educative React Trace
+- [ ] 浏览器工作原理与实践
+- [ ] 正则表达式
