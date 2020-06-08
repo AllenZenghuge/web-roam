@@ -12,6 +12,6 @@ Welcome to SedationH's Web Roam World😊
 
 ## Todo
 
-- [ ] Educative React Trace
+- [ ] Educative React Track
 - [ ] 浏览器工作原理与实践
 - [ ] 正则表达式
