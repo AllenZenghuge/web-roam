@@ -66,6 +66,8 @@ HTTP/1.0 除了对多文件提供良好的支持外，还依据当时实际的�
 
 
 
+![image-20200614194845430](/Users/sedationh/Library/Application Support/typora-user-images/image-20200614194845430.png)
+
 总的来说，HTTP/1.1大大优化了网络效率，核心方式有以下三种
 
 1. 增加了持久连接；
