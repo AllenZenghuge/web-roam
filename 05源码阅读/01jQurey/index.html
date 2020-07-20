@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jQurey.js"></script>
+</head>
+
+<body>
+  <input id="b" type="button" value="Apply" /><br />
+  <div class="blue">1</div>
+  <div class="blue">2</div>
+  <div class="blue">3</div>
+  <script>
+    $.fn.blueBorder = function () {
+      this.each(function () {
+        $(this).css("border", "solid blue 2px");
+      });
+      return this;
+    };
+    $.fn.blueText = function () {
+      this.each(function () {
+        $(this).css("color", "blue");
+      });
+      return this;
+    };
+    $("#b").click(function () {
+      $('.blue').blueBorder().blueText();
+    });
+  </script>
+</body>
+
+</html>
