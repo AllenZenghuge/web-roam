@@ -5,30 +5,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./jQurey.js"></script>
+  <!-- <script src="./jQurey.js"></script> -->
 </head>
 
 <body>
-  <input id="b" type="button" value="Apply" /><br />
-  <div class="blue">1</div>
-  <div class="blue">2</div>
-  <div class="blue">3</div>
   <script>
-    $.fn.blueBorder = function () {
-      this.each(function () {
-        $(this).css("border", "solid blue 2px");
-      });
-      return this;
-    };
-    $.fn.blueText = function () {
-      this.each(function () {
-        $(this).css("color", "blue");
-      });
-      return this;
-    };
-    $("#b").click(function () {
-      $('.blue').blueBorder().blueText();
+    ; (function (global, factory) {
+      factory(global)
+    })(window, function (window) {
+      var
+        jQuery = function (selector, context) {
+          // 无new构造
+          return new jQuery.fn.init(selector, context)
+        };
+      // 使用fn仅仅是为了方便
+      jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+        show: function () {
+          console.log('这里是原型上的方法,也叫做实例方法，因为是创建出来的实例进行使用的，通常涉及dom相关')
+        }
+      }
+      // 但jQuery中不是这样一个一个挂载的，而是通过extend函数统一挂上的
+      jQuery.say = function () {
+        console.log('这里是静态方法,通常与dom无关')
+      }
+
+      /**
+       * extend所完成的效果，就是用来添加方法或者属性的
+       * 具体api见官网，注意先了解
+       * 下面先简单实现没有深copy版本的
+       */
+      jQuery.extend = jQuery.fn.extend = function () {
+        var
+          // 需要拓展进来的对象object1, object2 ...
+          options,
+          // object上的key
+          name,
+          copy,
+          target = arguments[0] || {},
+          i = 1,
+          length = arguments.length;
+        if (length === 1) {
+          // 证明此时省略了tar,那么默认为jQuery or 实例 通过this动态适应
+          target = this
+          i--
+        }
+        for (; i < length; i++) {
+          options = arguments[i]
+          if (options !== undefined || options !== null) {
+            for (name in options) {
+              copy = options[name]
+
+              // Prevent Object.prototype pollution
+              // Prevent never-ending loop
+              if (name === '__proto__' || target === copy) {
+                continue
+              }
+
+              // Don't bring in undefined values
+              if (copy !== undefined) {
+                target[name] = copy
+              }
+            }
+          }
+        }
+      }
+
+      var
+        init = jQuery.fn.init = function (selector, context) {
+          console.log('使用时init进行初始化')
+        };
+      // 这样做的意义：让new init出的实例对象具有jQuery.fn上的方法
+      init.prototype = jQuery.fn
+
+
+      window.jQuery = window.$ = jQuery
     });
+    $().show()
+    $.say()
   </script>
 </body>
 
