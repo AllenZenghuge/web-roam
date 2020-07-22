@@ -84,34 +84,22 @@
           // 遇到循环引用的情况就跳过
           if (target === copy) continue
 
-          // 递归的深拷贝
-          // 这里deep为true，并且需要拷贝的值有值，并且是纯粹的对象
-          // 或者copy为Array
+          // 要递归的对象必须是 plainObject 或者数组
           if (deep && copy && jQuery.isPlainObject(copy) ||
             (copyIsArray = Array.isArray(copy))
           ) {
 
             // 源目标，需要把值赋在上面
             src = target[name]
-            // src
-            // {
-            //   a :1
-            // }
-            // copy
-            // {
-            //   a:[1,2]
-            // }
-            if (copyIsArray && !Array.isArray(src)) {
-              clone = []
-            } else if (!copyIsArray && !jQuery.isPlainObject(src)) {
-              // clone 赋值为空对象
-              clone = {};
+
+            // 这里还是挺迷的，回头看
+            if (copyIsArray) {
+              copyIsArray = false
+              clone = src && Array.isArray(src) ? src : []
             } else {
-              // 否则 clone = src
-              clone = src;
+              clone = src && isPlainObject(src) ? src : {}
             }
 
-            copyIsArray = false
             target[name] = jQuery.extend(deep, clone, copy)
           } else if (copy !== undefined) {
             // Don't bring in undefined values

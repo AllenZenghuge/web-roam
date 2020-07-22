@@ -253,3 +253,41 @@ JavaScript calls the `toString` method automatically when a [`Function`](https:/
 
 ### extend
 
+完整的实现和注释参看[deepjQ.js](/05源码阅读/01jQurey/jQurey.js)
+
+
+
+### noConflict
+
+这个api 的场景是
+
+先有其他使用$的library导入，再导入$
+
+true的参数是用于处理多版本jQ共同使用的
+
+```js
+var
+
+	// Map over jQuery in case of overwrite
+	_jQuery = window.jQuery,
+
+	// Map over the $ in case of overwrite
+	_$ = window.$;
+
+jQuery.noConflict = function( deep ) {
+	// 如果已经存在$ === jQuery;
+	// 把已存在的_$赋值给window.$;
+	if ( window.$ === jQuery ) {
+		window.$ = _$;
+	}
+
+	// 如果deep为 true, 并且已经存在jQuery === jQuery;
+	// 把已存在的_jQuery赋值给window.jQuery;
+	if ( deep && window.jQuery === jQuery ) {
+		window.jQuery = _jQuery;
+	}
+
+	// 最后返回jQuery
+	return jQuery;
+};
+```

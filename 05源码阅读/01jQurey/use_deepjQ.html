@@ -24,6 +24,15 @@
     b.name = 'SedationH'
     b.goods.a = 6
     console.log(a, b)
+
+    let c = $.extend(
+      {
+        a: [1]
+      }, {
+      a: [{ 1: 1 }, 2, 3]
+    }
+    )
+    console.log(c)
   </script>
 </body>
 
