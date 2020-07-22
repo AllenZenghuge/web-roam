@@ -10,6 +10,7 @@
 
 <body>
   <script>
+
     ; (function (global, factory) {
       factory(global)
     })(window, function (window) {
@@ -56,12 +57,6 @@
             for (name in options) {
               copy = options[name]
 
-              // Prevent Object.prototype pollution
-              // Prevent never-ending loop
-              if (name === '__proto__' || target === copy) {
-                continue
-              }
-
               // Don't bring in undefined values
               if (copy !== undefined) {
                 target[name] = copy
@@ -70,6 +65,15 @@
           }
         }
       }
+
+      /**
+       * extend的用处很多，既可以用于写外部插件，也可以用于方便内部挂载
+       */
+      jQuery.extend({
+        hi: function () {
+          console.log('这里是通过extend挂载到jq上的 ajax就是这样子处理的')
+        }
+      })
 
       var
         init = jQuery.fn.init = function (selector, context) {
@@ -83,6 +87,7 @@
     });
     $().show()
     $.say()
+    $.hi()
   </script>
 </body>
 

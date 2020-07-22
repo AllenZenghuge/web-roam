@@ -1,0 +1,49 @@
+<!-- 先简单实现深度拷贝的效果 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<a href="https://github.com/mqyqingfeng/Blog/issues/32">参考</a>
+
+<body>
+  <script>
+    /**
+     * @param obj An object offer properties
+     * @returns from deep copy Obj
+     */
+    function deepCopy(obj) {
+      if (typeof obj !== 'object') return
+      const newObj = obj instanceof Array ? [] : {}
+      for (const key in obj) {
+        console.log(key)
+        newObj[key] = typeof obj[key] === 'object' ?
+          deepCopy(obj[key]) :
+          obj[key]
+      }
+      return newObj
+    }
+    let a = {
+      first: {
+        name: 'a'
+      },
+      second: {
+        age: 1
+      }
+    }
+
+    let b = a
+    b.first.name = 'c'
+    console.dir(a)
+
+    let c = deepCopy(a)
+    c.second.age = 2
+    console.log(a, c)
+  </script>
+</body>
+
+</html>

@@ -237,6 +237,7 @@
     splice: arr.splice
   };
 
+  // SedationH
   jQuery.extend = jQuery.fn.extend = function () {
     var options, name, src, copy, copyIsArray, clone,
       target = arguments[0] || {},

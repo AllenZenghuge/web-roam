@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./deepjQ.js"></script>
+</head>
+
+<body>
+  <script>
+    let a = $.extend({}, {
+      goods: {
+        a: 1,
+        b: 2
+      }
+    })
+
+    console.log(a)
+
+    let b = $.extend(true, {}, a)
+    console.log(b)
+    b.name = 'SedationH'
+    b.goods.a = 6
+    console.log(a, b)
+  </script>
+</body>
+
+</html>
