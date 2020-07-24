@@ -253,7 +253,7 @@ JavaScript calls the `toString` method automatically when a [`Function`](https:/
 
 ### extend
 
-完整的实现和注释参看[deepjQ.js](/deepjQ.js)
+完整的实现和注释参看[deepjQ.js](deepjQ.js)
 
 
 
