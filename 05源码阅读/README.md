@@ -1,12 +1,9 @@
-# jQuery
+# 源码阅读
 
-**info**
+阅读经典的源码，学习设计思想，是站在巨人的肩膀上。
 
-> jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+也能用于巩固已经学习的知识，看到过去不曾发现的世界。
 
 
 
-[官网](https://jquery.com/)
-
-[From](https://www.lxchuan12.cn/jQuery/#%E8%87%AA%E6%89%A7%E8%A1%8C%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0)
-
+一直都想进行，如今磕磕绊绊中基础完善的差不多了，恰逢[良师](https://www.lxchuan12.cn/jQuery/)，受益匪浅。

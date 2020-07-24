@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const gpd = Object.getOwnPropertyDescriptor
+    let a = {
+      name: 'a',
+      __proto__: 'a'
+    }
+    for (const key in a) {
+      console.log(key)
+    }
+    console.log(
+      gpd(a, 'name'),
+      gpd(a, '__proto__'),
+      gpd(Function.prototype, '__proto__'),
+      a.__proto__
+    )
+  </script>
+</body>
+
+</html>
