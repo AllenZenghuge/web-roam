@@ -1,3 +1,11 @@
+## 有帮助的资源
+
+[underscore 系列之如何写自己的 underscore](https://github.com/mqyqingfeng/Blog/issues/56#%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1)
+
+[源码解析](https://yoyoyohamapi.gitbooks.io/undersercore-analysis/content/base/)
+
+
+
 ## 关于运算符
 
 ```js
