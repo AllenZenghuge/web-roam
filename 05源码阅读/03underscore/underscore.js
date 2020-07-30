@@ -38,6 +38,16 @@
   // Naked function reference for surrogate-prototype-swapping.
   var Ctor = function () { };
 
+  /**
+   * study
+   *  _是一个函数
+   *  _函数上直接挂载一些方法提供函数式风格
+   *    _.each([1,2,3],e => console.log(e))
+   *  也通过new _()创建实例，实例的prototype指向_函数的prototype
+   *  来得到一致的方法，实现OOP式风格,_mixin用于实现将_函数上的
+   *  实例方法拷贝到_.prototype
+   *    _([1,2,3]).each(e => console.log(e))
+   */
   // Create a safe reference to the Underscore object for use below.
   var _ = function (obj) {
     if (obj instanceof _) return obj;

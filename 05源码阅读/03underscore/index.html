@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="./underscore.js"></script> -->
+  <script src="./demo-underscore.js"></script>
+</head>
+
+<body>
+  <script>
+    /**
+     * 一下三个 分别测试实例函数调用，静态方法调用，有趣的chain流编程
+     */
+    _([1, 2, 3]).each(e => console.log(e))
+    _.each([1, 2, 3], e => console.log(e))
+    _.chain([1, 2, 3]).each(e => console.log(e))
+  </script>
+</body>
+
+</html>
