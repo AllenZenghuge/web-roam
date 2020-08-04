@@ -29,6 +29,7 @@
   // Create a safe reference to the Underscore object for use below.
   var _ = function (obj) {
     if (obj instanceof _) return obj;
+    // 如果当前函数不在new 调用中，就返回
     if (!(this instanceof _)) return new _(obj);
     this._wrapped = obj;
   }
@@ -59,6 +60,7 @@
 
   /**
    * 暂时不实现context的绑定
+   * obj可以是对象或者数组
    */
   _.each = function (obj, iteratee, context) {
     var i, length
@@ -81,6 +83,9 @@
     return typeof obj == 'function' || false;
   };
 
+  /**
+   * 获取对象中的所有函数方法
+   */
   _.functions = function (obj) {
     var names = [];
     for (var key in obj) {
@@ -89,6 +94,8 @@
     return names.sort();
   };
 
+  // chain化后用的都是实例了
+  // 调用方法的时候都会通过chainResult,就完成了后面的自动chain化
   _.chain = function (obj) {
     var instance = _(obj)
     instance._chain = true
@@ -108,10 +115,17 @@
     _.each(_.functions(obj), function (name) {
       var func = _[name] = obj[name];
       _.prototype[name] = function () {
+        // 实例在执行通过mixin挂载到prototype上的方法，才会进入这个函数
+        // 实际上，prototype上都没有具体实现，调用的还是_函数上的方法
+        // 通过func拿到所需函数，apply修改函数运行时的this指向
+
+        // 目前还不理解为何要将this指向函数_
+
         var args = [this._wrapped];
-        // push.apply(args, arguments);
         args.push(...arguments)
-        // 注意apply就在执行穿入的函数了
+
+        // 这个this是调用的实例
+
         return chainResult(this, func.apply(_, args));
       }
     })
